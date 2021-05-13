@@ -2,7 +2,7 @@
 # fid-sdk-web v1
 fid-sdk-web v1 integration documentation for WEB
 
-Phiên bản tiếng Việt [xem ở đây](./README-vi.md)
+English version [here](./README.md)
 
 # Introduce
 FID SDK is a library for web to interact with FID Platform. FID SDK includes the following main functions:
