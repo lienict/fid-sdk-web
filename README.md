@@ -28,7 +28,7 @@ You have better choice library that supports the [PKCE](https://datatracker.ietf
 
 We suggest you using this [library](https://github.com/IdentityModel/oidc-client-js)
 
-## Step 3: Save AccessToken and RefreshToken
+## Step 3 (Optional): Save AccessToken and RefreshToken
 When you have AccessToken and RefreshToken after finish step 1, you must save them as cookies with below rules
 
 - You save AccessToken with name *access_token*
