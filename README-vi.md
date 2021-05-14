@@ -1,53 +1,45 @@
-
 # fid-sdk-web v1
-fid-sdk-web v1 integration documentation for WEB
+Tài liệu tích hợp fid-sdk-web cho WEB
 
 English version [here](./README.md)
 
 # Introduce
-FID SDK is a library for web to interact with FID Platform. FID SDK includes the following main functions:
-- Support to get profile information of the user
-- Support Logout
+FID SDK là thư viện cho phép ứng dụng làm việc với FID Platform. FID SDK version 01 bao gồm các chức năng như sau
+- Hỗ trợ lấy thông tin user
 
 ## Support
-If you have any questions you could:
+Nếu bạn cần hỗ trợ hãy làm theo cách sau : 
 
-- Contact directly via email with the SDK team for assistance or contact us at [ftech.ai](https://ftech.ai/)
+- Liên hệ trực tiếp qua Email với đội phát triển SDK hoặc liên hệ với chung tôi qua [ftech.ai](https://ftech.ai/)
 
-## Step 1 : Embed library
+## Step 1: Authentication
+Liên hệ với [ftech.ai](https://ftech.ai/) để đăng ký client. Ftech sẽ cung cấp cho bạn client_id, client_secret(optional), accept CORS và một vài thông tin cần thiết khác.
+
+Sau đó, bạn có thể sử dụng third party client SDK để giao tiếp với [OAuth2.0](https://datatracker.ietf.org/doc/html/rfc6749) và [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) providers để login/register/logout/reset password...
+
+Bạn nên chọn các thư viện hỗ trợ về [PKCE](https://datatracker.ietf.org/doc/html/rfc7636) extensions cho OAuth
+
+Chúng tôi có thể gợi ý cho bạn [library](https://github.com/IdentityModel/oidc-client-js)
+
+## Step 2 (Optional): Lưu AccessToken and RefreshToken
+Khi bạn có AccessToken và RefreshToken sau bước 1, Bạn có thể lưu chúng dưới dạng cookie với tên như sau
+
+- Bạn lưu AccessToken với tên *access_token*
+- Bạn lưu RefreshToken với tên *refresh_token*
+
+## Hướng dẫn sử dụng cơ bản
+### Nhúng thư viện (Optional)
+Bạn có thể download hoặc nhúng link sau. 
 From CDN
 ```java
 <script src="https://cdn.auth0.com/js/auth0-spa-js/1.13/auth0-spa-js.production.js"></script>
 ```
-
-## Step 2: Authentication
-Liên hệ với [ftech.ai](https://ftech.ai/) để đăng ký thông tin client. Ftech sẽ cung cấp các thông số như client_id, client_secret(optional)...
-
-Sau đó, bạn có thể chọn các thứ viên thứ 3 để giao tiếp với [OAuth2.0](https://datatracker.ietf.org/doc/html/rfc6749) và [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) providers để login/register/logout/reset password...
-
-Bạn nên chọn library hỗ trợ [PKCE](https://datatracker.ietf.org/doc/html/rfc7636) extensions cho OAuth
-
-Chúng tôi khuyến khích bạn sử dụng [library](https://github.com/auth0/auth0-spa-js)
-
-## Step 3: Lưu trữ AccessToken and RefreshToken
-Khi bạn đã có AccessToken và RefreshToken sau khi hoàn thành bước 2, bạn 
-
-- You save AccessToken with name *access_token*
-- You save RefreshToken with name *refresh_token*
-
-## Basic instructions for use
-### 1. Get User Information
-You can get user's information by using this function
+### 1. Lấy thông tin user
+Bạn có thể lấy thông tin user bằng cách gọi hàm
 
 ```java
 const userInfo = await window.FtechOAuth.getUserInfo()
 ```
 
-### 2. Logout
-You can logout by using this function 
-```java
-await window.FtechOAuth.logout()
-```
 Note : 
-- When logout, we'll clear all cookies in the website
-- FtechOAuth is static object that created in the SDK that you embeded in the Step1
+- FtechOAuth là static object được tạo sau khi bạn nhúng thư viện JS
