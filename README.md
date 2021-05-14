@@ -27,7 +27,7 @@ When you have AccessToken and RefreshToken after finish step 1, you must save th
 - You save AccessToken with name *access_token*
 - You save RefreshToken with name *refresh_token*
 
-## Basic instructions for use
+## Basic instructions for use (Optional in this version)
 ### Embed library
 You can get user information by embed this library. This is optional because user's information is retrieved in Third Party in step 1 From CDN
 From CDN
