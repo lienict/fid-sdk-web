@@ -32,7 +32,7 @@ Khi bạn có AccessToken và RefreshToken sau bước 1, Bạn có thể lưu c
 Bạn có thể download hoặc nhúng link sau. 
 From CDN
 ```java
-<script src="https://github.com/lienict/fid-sdk-web/blob/main/ftech-oauth.min.js"></script>
+<script src="https://id-dev.ftech.ai/sdk/v1.0.1/ftech-oauth.min.js"></script>
 ```
 ### 1. Lấy thông tin user
 Bạn có thể lấy thông tin user bằng cách gọi hàm
