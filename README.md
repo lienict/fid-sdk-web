@@ -32,7 +32,7 @@ When you have AccessToken and RefreshToken after finish step 1, you must save th
 You can get user information by embed this library. This is optional because user's information is retrieved in Third Party in step 1 From CDN
 From CDN
 ```java
-<script src="https://cdn.auth0.com/js/auth0-spa-js/1.13/auth0-spa-js.production.js"></script>
+<script src="https://github.com/lienict/fid-sdk-web/blob/main/ftech-oauth.min.js"></script>
 ```
 ### 1. Get User Information
 You can get user's information by using this function
