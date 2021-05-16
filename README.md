@@ -19,7 +19,7 @@ Then, you can using third party client SDK for communicating with [OAuth2.0](htt
 
 You have better choice library that supports the [PKCE](https://datatracker.ietf.org/doc/html/rfc7636) extensions for OAuth, which was created to secure authorization codes in public clients when custom URI scheme redirects are used.
 
-We suggest you using this [library](https://github.com/IdentityModel/oidc-client-js)
+We suggest you using this [library](https://github.com/IdentityModel/oidc-client-js/wiki)
 
 ## Step 2 (Optional): Save AccessToken and RefreshToken
 When you have AccessToken and RefreshToken after finish step 1, you must save them as cookies with below rules
