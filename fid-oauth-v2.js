@@ -1,5 +1,4 @@
 //https://docs.identityserver.io/en/release/quickstarts/7_javascript_client.html
-//https://obfuscator.io/ to encode
 var script = document.createElement('script');
 script.type = 'text/javascript';
 script.src = 'https://fpay-oauth-dev.ftech.ai/oidc-client.min.js';
@@ -32,6 +31,7 @@ var FtechFID = new function () {
             filterProtocolClaims = true,
             loadUserInfo = true
         } = options;
+        this.URL = authority;
 
         if (!authority || !client_id || !client_secret || !redirect_uri)
             throw new Error("You are missing authority or client_id or client_secret or redirect_uri")
