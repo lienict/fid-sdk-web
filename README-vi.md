@@ -19,7 +19,7 @@ Sau đó, bạn có thể sử dụng third party client SDK để giao tiếp v
 
 Bạn nên chọn các thư viện hỗ trợ về [PKCE](https://datatracker.ietf.org/doc/html/rfc7636) extensions cho OAuth
 
-Chúng tôi có thể gợi ý cho bạn [library](https://github.com/IdentityModel/oidc-client-js)
+Chúng tôi có thể gợi ý cho bạn [library](https://github.com/IdentityModel/oidc-client-js/wiki)
 
 ## Step 2 (Optional): Lưu AccessToken and RefreshToken
 Khi bạn có AccessToken và RefreshToken sau bước 1, Bạn có thể lưu chúng dưới dạng cookie với tên như sau
