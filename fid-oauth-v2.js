@@ -1,4 +1,5 @@
 //https://docs.identityserver.io/en/release/quickstarts/7_javascript_client.html
+//https://obfuscator.io/ to encode
 var script = document.createElement('script');
 script.type = 'text/javascript';
 script.src = 'https://fpay-oauth-dev.ftech.ai/oidc-client.min.js';
