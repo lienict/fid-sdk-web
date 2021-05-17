@@ -37,32 +37,38 @@ Example:
 ### Solution 2. Using Ftech FID SDK
 We have built a SDK to communicating with Ftech FID that base on [oidc-client-js](https://github.com/IdentityModel/oidc-client-js).
 #### 1. Embed SDK and initialization
-To using SDK, you must embed the SDK first by using this code
+To using SDK, you must embed the SDK and call init function by using this code
 ``` java
+<script src="https://id-dev.ftech.ai/sdk/v2.0.1/oidc-client.min.js"></script>
 <script src="https://id-dev.ftech.ai/sdk/v2.0.1/ftech-oauth.min.js"></script>
+<script type="application/javascript">
+    const config = {
+      authority: "https://id-dev.ftech.ai",
+      client_id: "client.local",
+      client_secret: "SGe4BUMY9zT65MvVgme69FfkQ3pkH",
+      redirect_uri: "http://localhost:3000/openid",
+      response_type: "code",
+      scope: "openid profile offline_access",
+      filterProtocolClaims: true,
+      loadUserInfo: true,
+      post_logout_redirect_uri: "http://localhost:3000/openid",
+    };
+    window.FtechFID.init(config);
+  </script>
 ```
 The static object FtechFID is created after embedding. 
-
-First of all, you must call the init() function to init the communicating using the informations you registerd in step 1
-
-Example
-```javascript
-   const config = {
-        authority: "https://id-dev.ftech.ai",
-        client_id: "client.local",
-        client_secret: "SGe4BUMY9zT65MvVgme69FfkQ3pkH",
-        redirect_uri: "http://localhost:3000/callback.html",
-        response_type: "code",
-        scope: "openid profile offline_access",
-        filterProtocolClaims: true,
-        loadUserInfo: true,
-        post_logout_redirect_uri: "http://localhost:3000/index.html",
-    };
-    FtechFID.init(config);
-```
 There are some properties are optional like  response_type, scope, filterProtocolClaims, loadUserInfo. That mean, you cannot declare them in the config.
 
-#### 2. Callback page
+#### 2. Login
+After embed SDK and initialization step, to login to FID system, you can call this function
+```javascript
+FtechFID.login()
+```
+If this function is work well, it'll redirect the browser to FID login page. Then, user'll login/register and do every thing they like in this website.
+
+After login success, the browser will be redirected to your callback page. The callback page is declared at redirect_uri property. If you forgot it, please see your config variable.
+
+#### 3. Callback page
 This HTML file is the designated redirect_uri page once the user has logged into IdentityServer. 
 It will complete the OpenID Connect protocol sign-in handshake with IdentityServer. 
 Once the sign-in is complete, we can then redirect the user back to the main page. 
@@ -79,22 +85,14 @@ You can using callback.html like below code
     <script src="oidc-client.js"></script>
     <script>
       const homePage = 'http://your-home-page'
-      FtechFID.callbackLogin(homePage)
+      window.FtechFID.callbackLogin(homePage)
     </script>
 </body>
 </html>
 ```
 
-#### 3. Login
-After embed SDK and initialization step, to login to FID system, you can call this function
-```javascript
-FtechFID.login()
-```
-If this function is work well, it'll redirect the browser to FID login page. Then, user'll login/register and do every thing they like in this website.
 
-After login success, the browser will be redirected to your callback page. The callback page is declared at redirect_uri property. If you forgot it, please see your config variable.
-
-#### 3. Get user's information
+#### 4. Get user's information
 If you want to get user's information, you can use getUserAsync function.
 Example:
 ```javascript
