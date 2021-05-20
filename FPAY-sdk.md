@@ -12,76 +12,28 @@ If you have any questions you could:
 
 ## Step 1: Registration
 Contact us to register your Web App in FPAY system. 
-We'll give you client_id, client_secret and some infomations, accept CORS.
+We'll give you client_id( optional we have client_secret and some information) accept CORS.
 
 ## Step 2:  Using Ftech FPAY SDK
 #### 1. Embed SDK and initialization
 To using SDK, you must embed the SDK and call init function by using this code
 ``` java
-<script src="https://id-dev.ftech.ai/sdk/v2.0.1/oidc-client.min.js"></script>
-<script src="https://id-dev.ftech.ai/sdk/v2.0.1/ftech-oauth.min.js"></script>
-<script type="application/javascript">
-    const config = {
-      authority: "https://id-dev.ftech.ai",
-      client_id: "client.local",
-      client_secret: "SGe4BUMY9zT65MvVgme69FfkQ3pkH",
-      redirect_uri: "http://localhost:3000/openid",
-      response_type: "code",
-      scope: "openid profile offline_access",
-      filterProtocolClaims: true,
-      loadUserInfo: true,
-      post_logout_redirect_uri: "http://localhost:3000/openid",
+<script src="./SDK/v1.0.0/fpay-sdk-min.js"></script>
+```
+The static object FTechFPAY is created after embedding. 
+
+#### 2. Redirect To pay
+Now, we are building SDK base on redirect to pay flow. (This flow will be changed in the future).
+If you want to pay, you can call function like below
+```javascript
+    const options = {
+        idToken : 'abc',
+        client_id : 'fpay-spa'
+        returnURL :'http://your-returnUL'
     };
-    window.FtechFID.init(config);
-  </script>
+    FTechFPAY.redirectToPay(options)
 ```
-The static object FtechFID is created after embedding. 
-There are some properties are optional like  response_type, scope, filterProtocolClaims, loadUserInfo. That mean, you cannot declare them in the config.
-
-#### 2. Login
-After embed SDK and initialization step, to login to FID system, you can call this function
-```javascript
-FtechFID.login()
-```
-If this function is work well, it'll redirect the browser to FID login page. Then, user'll login/register and do every thing they like in this website.
-
-After login success, the browser will be redirected to your callback page. The callback page is declared at redirect_uri property. If you forgot it, please see your config variable.
-
-#### 3. Callback page
-This HTML file is the designated redirect_uri page once the user has logged into IdentityServer. 
-It will complete the OpenID Connect protocol sign-in handshake with IdentityServer. 
-Once the sign-in is complete, we can then redirect the user back to the main page. 
-
-You can using callback.html like below code
-```html
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title></title>
-</head>
-<body>
-    <script src="oidc-client.js"></script>
-    <script>
-      const homePage = 'http://your-home-page'
-      window.FtechFID.callbackLogin(homePage)
-    </script>
-</body>
-</html>
-```
-
-
-#### 4. Get user's information
-If you want to get user's information, you can use getUserAsync function.
-Example:
-```javascript
-  const userInfo = await FtechFID.getUserAsync() 
-```
-Note :  we're using async/await in getUserAsync function 
-
-#### 4. Logout
-If you want to logout, you can use logout function
-Example 
-```javascript
-  FtechFID.logout()
-```
+- idToken is param that returned after communicating with FID flow (see FID document flow)
+- client_id is params that FPAY offered you in the step1
+- returnURL is url callback after payment process
+After you call redirectToPay function, the browsers will be redirect to our pay system.
