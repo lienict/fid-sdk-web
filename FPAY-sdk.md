@@ -18,7 +18,7 @@ We'll give you client_id( optional we have client_secret and some information) a
 #### 1. Embed SDK and initialization
 To using SDK, you must embed the SDK and call init function by using this code
 ``` java
-<script src="./SDK/v1.0.0/fpay-sdk-min.js"></script>
+<script src="https://fpay-oauth-dev.ftech.ai/SDK/v1.0.0/fpay-sdk-min.js"></script>
 ```
 The static object FTechFPAY is created after embedding. 
 
