@@ -5,6 +5,7 @@ fid-sdk-web v2.0.0 integration documentation for Web App
 # Introduce
 FID SDK is a library for web to interact with FID Platform. FID SDK includes the following main functions:
 - Support init, login, get user's information and logout
+- See demo [here](https://fpay-oauth-dev.ftech.ai/demo/)
 
 ## Support
 If you have any questions you could:
