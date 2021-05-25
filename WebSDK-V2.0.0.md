@@ -107,3 +107,24 @@ Example
   FtechFID.logout()
 ```
 
+## Related documents
+FID is built according to openid standard, full documentation can be viewed [here](https://openid.net/specs/openid-connect-core-1_0.html#Authenticates)
+
+Some basic information that can be a quick reference to develop your app
+
+### 1, User information
+This specification defines a set of standard Claims. They can be requested to be returned either in the UserInfo Response.
+
+| Member | Type  | Description  |
+| ------- | --- | --- |
+| sub | string | Subject - Global user ID, ie: "sub": "1000" |
+| name | string | Display name, ie: "preferred_username": "Bạch Ngọc Sơn" |
+| preferred_username | string | Field username, ie: "name": "sonbn" |
+| picture | string | Primary profile picture url, ie: "picture": "https://a.com/b.jpg" |
+| email | string | Primary email, used by local login, ie: "sonbn@ftech.ai" |
+| email_verified | bool | Primary email verification status |
+| phone_number | string | Primary phone number, used by local login. "+84"-formated, ie: "phone_number": "+8453458875". This field is also used for SMS OTP |
+| phone_number_verified | bool | Primary phone number verification status |
+| extra_info | object | Example: "extra_info": {"emails":["a@a.com","b@b.com"],"names":["A","B","C"],"pictures":[]} |
+
+
